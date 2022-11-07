@@ -1,8 +1,26 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using RobotCleanerClient;
+using RobotCleanerCore;
+
 Console.WriteLine("Hello, World!");
 
-// Collect a set of input from standard in
+CommandHandler commandHandler = new CommandHandler();
+Console.WriteLine("> Enter number of commands(default is 0):");
+commandHandler.AddInput(Console.ReadLine());
 
-// robot should execute cleaning command
+Console.WriteLine("> Enter starting Position (default is 0 0):");
+commandHandler.AddInput(Console.ReadLine());
 
-//give output of number of places cleaned
+for (int i = 0; i < commandHandler.NumberOfCommand; i++) { 
+    Console.WriteLine("> Enter Direction and Steps(eg: N 1):");
+    commandHandler.AddInput(Console.ReadLine());
+}
+Console.WriteLine("Input complete. Press any key to continue..");
+
+Robot robot = new Robot(commandHandler);
+
+Console.WriteLine("Robot is cleaning ..");
+robot.Execute();
+
+Console.WriteLine(robot.ShowResult());
+Console.ReadLine();

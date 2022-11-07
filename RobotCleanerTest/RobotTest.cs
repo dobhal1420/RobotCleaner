@@ -11,6 +11,21 @@ namespace RobotCleanerTest
         }
 
         [Test]
+        public void GivenIllegalEmptyCommandRobotInitialized()
+        {
+            //arrange
+            CommandHandler commandHandler = new CommandHandler();
+            commandHandler.AddInput(" ");
+            commandHandler.AddInput("0 0");
+
+            //act
+            Robot robot = new Robot(commandHandler);
+
+            //assert
+            Assert.IsNotNull(robot);
+        }
+
+        [Test]
         public void GivenEmptyCommandRobotInitialized()
         {
             //arrange
