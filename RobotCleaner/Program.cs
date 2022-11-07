@@ -11,7 +11,7 @@ commandHandler.AddInput(Console.ReadLine());
 Console.WriteLine("> Enter starting Position (default is 0 0):");
 commandHandler.AddInput(Console.ReadLine());
 
-for (int i = 0; i < commandHandler.NumberOfCommand; i++) { 
+for (int i = 0; i < commandHandler.NumberOfCommands; i++) { 
     Console.WriteLine("> Enter Direction and Steps(eg: N 1):");
     commandHandler.AddInput(Console.ReadLine());
 }

@@ -23,7 +23,7 @@ namespace RobotCleanerTest
             _commandHandler.AddInput("10 22");
             _commandHandler.AddInput("E 2");
 
-            Assert.IsTrue(_commandHandler.NumberOfCommand == 1);
+            Assert.IsTrue(_commandHandler.NumberOfCommands == 1);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace RobotCleanerTest
             _commandHandler.AddInput("E 2");
             _commandHandler.AddInput("N 1");
 
-            Assert.IsTrue(_commandHandler.NumberOfCommand == 2);
+            Assert.IsTrue(_commandHandler.NumberOfCommands == 2);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace RobotCleanerTest
             _commandHandler.AddInput("0");
             _commandHandler.AddInput("10 22");
 
-            Assert.IsTrue(_commandHandler.NumberOfCommand == 0);
+            Assert.IsTrue(_commandHandler.NumberOfCommands == 0);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace RobotCleanerTest
                 _commandHandler.AddInput("N 1");
             }
 
-            Assert.IsTrue(_commandHandler.NumberOfCommand == 10000);
+            Assert.IsTrue(_commandHandler.NumberOfCommands == 10000);
         }
         [Test]
         public void GivenNegativeIntegerCommandSuccessCommandsValidResult()
@@ -79,7 +79,7 @@ namespace RobotCleanerTest
                 _commandHandler.AddInput("N 1");
             }
 
-            Assert.IsTrue(_commandHandler.NumberOfCommand == 0);
+            Assert.IsTrue(_commandHandler.NumberOfCommands == 0);
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace RobotCleanerTest
                 _commandHandler.AddInput("N 1");
             }
 
-            Assert.IsTrue(_commandHandler.NumberOfCommand == 10000);
+            Assert.IsTrue(_commandHandler.NumberOfCommands == 10000);
         }
 
         [Test]

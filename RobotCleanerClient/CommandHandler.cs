@@ -1,4 +1,5 @@
 ﻿using RobotCleanerCore;
+using RobotCleanerCore.Helper;
 
 namespace RobotCleanerClient
 {
@@ -52,7 +53,7 @@ namespace RobotCleanerClient
 
         private void SetStartPosition(string inputString)
         {
-            var coordinates = inputString.Split(new char[] { ' ', '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var coordinates = InputSplitter.splitString(inputString);
             if (coordinates.Length > 1)
             {
                 int x, y;
@@ -62,7 +63,7 @@ namespace RobotCleanerClient
             }
         }
 
-        public int NumberOfCommand { get { return _numberOfCommands; } }
+        public int NumberOfCommands { get { return _numberOfCommands; } }
 
     }
 }

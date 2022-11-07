@@ -25,7 +25,7 @@ namespace RobotCleanerCore
 
         public NavigationCommand(string inputCommand)
         {
-            var coordinates = inputCommand.Split(new char[] { ' ', '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var coordinates = InputSplitter.splitString(inputCommand);
             if (coordinates.Length > 1)
             {
                 string direction = coordinates[0].ToUpper();
