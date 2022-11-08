@@ -1,5 +1,4 @@
-﻿using RobotCleanerClient;
-using RobotCleanerCore;
+﻿using RobotCleanerCore;
 
 namespace RobotCleanerTest
 {

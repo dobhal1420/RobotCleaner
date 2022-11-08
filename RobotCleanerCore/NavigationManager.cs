@@ -1,7 +1,7 @@
 ﻿using RobotCleanerCore;
 using RobotCleanerCore.Helper;
 
-namespace RobotCleanerClient
+namespace RobotCleanerCore
 {
     public class NavigationManager
     {

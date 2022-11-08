@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using RobotCleanerClient;
+
+
 using RobotCleanerCore;
 
 Console.WriteLine("Hello, World!");

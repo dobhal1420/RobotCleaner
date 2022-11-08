@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleanerClient", "RobotCleaner\RobotCleanerClient.csproj", "{58CC59B8-8647-4850-B31A-D0E2C781B10C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleanerCore", "RobotCleanerClient\RobotCleanerCore.csproj", "{1E8B3375-0E45-4FFD-A501-B7F294A724F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleanerCore", "RobotCleanerCore\RobotCleanerCore.csproj", "{1E8B3375-0E45-4FFD-A501-B7F294A724F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotCleanerTest", "RobotCleanerTest\RobotCleanerTest.csproj", "{CF3F03E7-E123-4F95-9D23-D89ABCAAE226}"
 EndProject
