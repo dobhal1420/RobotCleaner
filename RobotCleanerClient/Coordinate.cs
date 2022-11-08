@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RobotCleanerCore
+﻿namespace RobotCleanerCore
 {
     public class Coordinate : IEquatable<Coordinate>
     {
@@ -19,15 +13,15 @@ namespace RobotCleanerCore
             _y = GetCoordinateWithinRange(y);
         }
 
-        private int GetCoordinateWithinRange(int coordiante)
+        private int GetCoordinateWithinRange(int coordinate)
         {
 
-            if (coordiante < MinLowerLimit)
+            if (coordinate < MinLowerLimit)
                 return MinLowerLimit;
-            if(coordiante > MaxUppperLimit)
+            if(coordinate > MaxUppperLimit)
                 return MaxUppperLimit;
 
-            return coordiante;
+            return coordinate;
 
         }
 
