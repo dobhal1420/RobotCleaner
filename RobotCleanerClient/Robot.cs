@@ -9,11 +9,11 @@ namespace RobotCleanerCore
 {
     public class Robot
     {
-        private CommandHandler _commandHandler;
+        private NavigationManager _commandHandler;
         private MovementTracker _movementTracker;
         private Coordinate _currentPosition;
 
-        public Robot(CommandHandler commandHandler)
+        public Robot(NavigationManager commandHandler)
         {
             _commandHandler = commandHandler;
             _movementTracker = new MovementTracker();

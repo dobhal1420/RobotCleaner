@@ -5,74 +5,39 @@ namespace RobotCleanerTest
 {
     public class RobotTest
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        [Test]
-        public void GivenIllegalEmptyCommandRobotInitialized()
-        {
-            //arrange
-            CommandHandler commandHandler = new CommandHandler();
-            commandHandler.AddInput(" ");
-            commandHandler.AddInput("0 0");
-
-            //act
-            Robot robot = new Robot(commandHandler);
-
-            //assert
-            Assert.IsNotNull(robot);
-        }
-
-        [Test]
-        public void GivenEmptyCommandRobotInitialized()
-        {
-            //arrange
-            CommandHandler commandHandler = new CommandHandler();
-            commandHandler.AddInput("0");
-            commandHandler.AddInput("0 0");
-
-            //act
-            Robot robot = new Robot(commandHandler);
-
-            //assert
-            Assert.IsNotNull(robot);
-        }
 
         [Test]
         public void GivenEmptyCommandRobotStartPositionSameAsCurrentPosition()
         {
             //arrange
-            CommandHandler commandHandler = new CommandHandler();
-            commandHandler.AddInput("0");
-            commandHandler.AddInput("0 0");
-            Robot robot = new Robot(commandHandler);
+            NavigationManager navigationManager = new NavigationManager();
+            navigationManager.SetStartPosition("0 0");
+            Robot robot = new Robot(navigationManager);
 
             //act
             robot.Execute();
 
             //assert
-            Assert.That(robot.CurrentPostion.X, Is.EqualTo(commandHandler.startPosition.X));
-            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(commandHandler.startPosition.Y));
+            Assert.IsNotNull(robot);
+            Assert.That(robot.CurrentPostion.X, Is.EqualTo(navigationManager.startPosition.X));
+            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(navigationManager.startPosition.Y));
         }
 
         [Test]
         public void GivenOne20StepsCommandRobotPositionShouldMoveBy20Steps()
         {
             //arrange
-            CommandHandler commandHandler = new CommandHandler();
-            commandHandler.AddInput("1");
-            commandHandler.AddInput("0 0");
-            commandHandler.AddInput("N 20");
-            Robot robot = new Robot(commandHandler);
+            NavigationManager navigationManager = new NavigationManager();
+            navigationManager.SetStartPosition("0 0");
+            navigationManager.AddCommand("N 20");
+            Robot robot = new Robot(navigationManager);
 
             //act
             robot.Execute();
 
             //assert
-            Assert.That(robot.CurrentPostion.X, Is.EqualTo(commandHandler.startPosition.X));
-            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(commandHandler.startPosition.Y + 20));
+            Assert.That(robot.CurrentPostion.X, Is.EqualTo(navigationManager.startPosition.X));
+            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(navigationManager.startPosition.Y + 20));
             Assert.That(robot.ShowResult(), Is.EqualTo($"=> Cleaned: 20"));
         }
 
@@ -80,19 +45,18 @@ namespace RobotCleanerTest
         public void GivenOutOfBoundPositionCommandRobotPositionShouldMoveValidSteps()
         {
             //arrange
-            CommandHandler commandHandler = new CommandHandler();
-            commandHandler.AddInput("2");
-            commandHandler.AddInput("-9999 9990");
-            commandHandler.AddInput("N 20");
-            commandHandler.AddInput("W 20");
-            Robot robot = new Robot(commandHandler);
+            NavigationManager navigationManager = new NavigationManager();
+            navigationManager.SetStartPosition("-9999 9990");
+            navigationManager.AddCommand("N 20");
+            navigationManager.AddCommand("W 20");
+            Robot robot = new Robot(navigationManager);
 
             //act
             robot.Execute();
 
             //assert
-            Assert.That(robot.CurrentPostion.X, Is.EqualTo(commandHandler.startPosition.X - 1));
-            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(commandHandler.startPosition.Y + 10));
+            Assert.That(robot.CurrentPostion.X, Is.EqualTo(navigationManager.startPosition.X - 1));
+            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(navigationManager.startPosition.Y + 10));
             Assert.That(robot.ShowResult(), Is.EqualTo($"=> Cleaned: 11"));
         }
 
@@ -100,19 +64,18 @@ namespace RobotCleanerTest
         public void GivenOverlappingPositionCommandRobotPositionShouldMoveValidSteps()
         {
             //arrange
-            CommandHandler commandHandler = new CommandHandler();
-            commandHandler.AddInput("2");
-            commandHandler.AddInput("0 0");
-            commandHandler.AddInput("E 10");
-            commandHandler.AddInput("W 10");
-            Robot robot = new Robot(commandHandler);
+            NavigationManager navigationManager = new NavigationManager();
+            navigationManager.SetStartPosition("0 0");
+            navigationManager.AddCommand("E 10");
+            navigationManager.AddCommand("W 10");
+            Robot robot = new Robot(navigationManager);
 
             //act
             robot.Execute();
 
             //assert
-            Assert.That(robot.CurrentPostion.X, Is.EqualTo(commandHandler.startPosition.X));
-            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(commandHandler.startPosition.Y));
+            Assert.That(robot.CurrentPostion.X, Is.EqualTo(navigationManager.startPosition.X));
+            Assert.That(robot.CurrentPostion.Y, Is.EqualTo(navigationManager.startPosition.Y));
             Assert.That(robot.ShowResult(), Is.EqualTo($"=> Cleaned: 10"));
         }
 
