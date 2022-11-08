@@ -32,4 +32,4 @@ TODO
   * Return result.
 
 #### Robot
-  * Actual object which show the result - Number
+  * Actual object which show the result - Number of unique cleaned locations.
